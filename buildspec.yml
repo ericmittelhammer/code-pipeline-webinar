@@ -9,12 +9,10 @@ phases:
       - npm install
   build:
     commands:
-      - mkdir dist
-      - cd dist
       - npm pack
 artifacts:
   files:
-    - dist/*
+    - code-pipeline-demo-app-1.0.0.tgz
   
   
   
