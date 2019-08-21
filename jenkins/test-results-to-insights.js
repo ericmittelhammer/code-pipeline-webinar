@@ -1,7 +1,7 @@
-// takes the test results written by CodeBuild and sends them to Insights
+// takes the test results written by mocha and sends them to insights
 
 const http = require('https');
-const testStats = require('./testStats');
+const testStats = require('../testStats');
 
 const options = {
     hostname: 'insights-collector.newrelic.com',
@@ -19,9 +19,9 @@ const payload = {
     passes: testStats.stats.passes,
     failures: testStats.stats.failures,
     duration: testStats.stats.duration,
-    commitSha: process.env['CODEBUILD_RESOLVED_SOURCE_VERSION'],
-    buildId: process.env['CODEBUILD_BUILD_ID'],
-    repoUrl: process.env['CODEBUILD_SOURCE_REPO_URL']
+    gitRevision: process.env['GIT_REVISION'],
+    buildId: process.env['BUILD_ID'],
+    repoUrl: process.env['GIT_URL']
 }
 
 console.log("SENDING PAYLOAD:", payload);
