@@ -19,7 +19,7 @@ const payload = {
     passes: testStats.stats.passes,
     failures: testStats.stats.failures,
     duration: testStats.stats.duration,
-    gitRevision: process.env['GIT_REVISION'],
+    scmRevision: process.env['GIT_COMMIT'],
     buildId: process.env['BUILD_ID'],
     repoUrl: process.env['GIT_URL']
 }
