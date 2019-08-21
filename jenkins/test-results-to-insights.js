@@ -1,7 +1,7 @@
 // takes the test results written by mocha and sends them to insights
 
 const http = require('https');
-const testStats = require('../testStats');
+const testStats = require('./testStats');
 
 const options = {
     hostname: 'insights-collector.newrelic.com',
