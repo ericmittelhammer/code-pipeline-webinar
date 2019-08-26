@@ -14,7 +14,7 @@ const committers = [
     },
     {
         name: 'Developer Three',
-        email: 'Developerthree@example.com'
+        email: 'developerthree@example.com'
     },
     {
         name: 'Developer Four',
