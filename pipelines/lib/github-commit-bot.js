@@ -151,3 +151,5 @@ function commit(githubToken, owner, repo, filePath, shouldFail) {
     });   
 
 }
+
+module.exports = commit;
