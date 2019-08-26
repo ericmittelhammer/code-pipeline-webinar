@@ -83,8 +83,11 @@ function commit(githubToken, owner, repo, filePath, shouldFail) {
 
         const newContents = {};
 
+        var commitMessage = 'auto commit';
+
         if (parsedContents.failMode == true) {
             // tests are failing, use the same committer to fix them
+            commitMessage = 'fixing tests';
             newContents.failMode = false;
             newContents.failRate = 0.0;
             newContents.commit = {
@@ -107,6 +110,7 @@ function commit(githubToken, owner, repo, filePath, shouldFail) {
 
             // will this committer introduce failing tests?
             if (Math.random() < shouldFail) {
+                commitMessage = 'committing some failing tests'
                 newContents.failMode = true;
                 newContents.failRate = Math.random();
             } else {
@@ -119,7 +123,7 @@ function commit(githubToken, owner, repo, filePath, shouldFail) {
         return new Promise((resolve, reject) => {
 
             const payload = {
-                message: `auto committing`,
+                message: commitMessage,
                 committer: {
                     name: newContents.commit.committer.name,
                     email: newContents.commit.committer.email
