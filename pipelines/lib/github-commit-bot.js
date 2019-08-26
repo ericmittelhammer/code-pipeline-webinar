@@ -119,8 +119,7 @@ function commit(githubToken, owner, repo, filePath, shouldFail) {
         return new Promise((resolve, reject) => {
 
             const payload = {
-                message: `auto commit from AWS Lambda event:
-                ${JSON.stringify(event, null, 4)}`,
+                message: `auto committing`,
                 committer: {
                     name: newContents.commit.committer.name,
                     email: newContents.commit.committer.email
