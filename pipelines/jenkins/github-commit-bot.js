@@ -6,4 +6,8 @@ const repo = process.env['REPO'];
 const filePath = process.env['FILE_PATH'];
 const shouldFail = parseFloat(process.env['SHOULD_FAIL'])
 
-return commitBot(githubToken, owner, repo, filePath, shouldFail);
+commitBot(githubToken, owner, repo, filePath, shouldFail)
+.catch((e) => {
+    console.error(e);
+    process.exit(1);
+});
