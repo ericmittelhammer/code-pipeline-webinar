@@ -15,23 +15,19 @@ function sendTestResultsToInsights(newRelicAccountId, newRelicInsertKey, revisio
         }
     }
 
-    const payload = {
-        eventType: 'testResults',
-        numberOfTests: testStats.stats.tests,
-        passes: testStats.stats.passes,
-        failures: testStats.stats.failures,
-        duration: testStats.stats.duration,
+    const payload = Object.assign({}, testStats.stats, {
+        eventType: 'TestResults',
         revision,
         buildId,
         repoUrl
-    }
+    });
 
     console.log("SENDING PAYLOAD:", payload);
     const req = http.request(options, (res) => {
         var responseBody = '';
         res.on('data',(chunk) => responseBody = responseBody += chunk);
         res.on('end', () => {
-            console.log('Instights Request Completed with code', res.statusCode);
+            console.log('Insights Request Completed with code', res.statusCode);
             console.log('Body:')
             console.log(responseBody);
         });
